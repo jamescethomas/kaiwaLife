@@ -2,7 +2,7 @@ README
 
 1. mongod --dbpath /PATH/TO/DB
 2. * in another terminal
-   $ cd {./data/}
+   $ cd /PATH/TO/DB
    $ mongo
    	> use nodetest
 3. * in another terminal
