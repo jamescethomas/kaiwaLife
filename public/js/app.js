@@ -24,6 +24,15 @@ kaiwaLife.factory('User', function(){
 });
 */
 
+kaiwaLife.factory('HttpStatus', function() {
+	var service = {};
+	service.SERVER_ERROR = 500;
+	service.CONFLICT = 409;
+	service.OK = 200;
+
+	return service; 
+});
+
 
 kaiwaLife.config(['$routeProvider', '$translateProvider',
 	function($routeProvider, $translateProvider) {

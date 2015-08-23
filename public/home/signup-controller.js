@@ -1,216 +1,7 @@
-// home_controller.js
-kaiwaControllers.controller('homeController', function($scope, $modal, $translate, User) {
-	$scope.openLoginModal = function (size) {
-
-		var modalInstance = $modal.open({
-			// animation: $scope.animationsEnabled,
-			templateUrl: 'home/logIn-modal.html',
-			controller: 'logInModalController',
-			size: size,
-			windowClass: 'login-signup-modal'
-		});
-
-		modalInstance.result.then(function (openSignUp) {
-			$("#home-view").removeClass('blur');
-			if (openSignUp) {
-				$scope.openSignUpModal('sm');
-			}
-		}, function () { 
-			$("#home-view").removeClass('blur');
-		});
-	};
-
-	$scope.openSignUpModal = function (size) {
-		var modalInstance = $modal.open({
-			templateUrl: 'home/signup-modal.html',
-			controller: 'signUpModalController',
-			size: size,
-			windowClass: 'login-signup-modal'
-		});
-
-		modalInstance.result.then(function (openLogIn) {
-			$("#home-view").removeClass('blur');
-			if (openLogIn)
-			{
-				$scope.openLoginModal('sm');
-			}
-		}, function () { 
-			$("#home-view").removeClass('blur');
-		});
-	};
-
-	$scope.changeLanguage = function(language) {
-		User.language = language;
-		$translate.use(language);
-
-		if (language == "en_US") {
-			$scope.language = "English";
-			$scope.selectedIndex = 0;
-		} else if (language = "jp") {
-			$scope.language = "日本語";
-			$scope.selectedIndex = 1;
-		}
-	};
-
-	var lang = User.language || $translate.proposedLanguage() || $translate.use();
-	$translate.use(lang);
-
-	if (lang == "en_US") {
-		$scope.language = "English";
-		$scope.selectedIndex = 0;
-	} else if (lang = "jp") {
-		$scope.language = "日本語";
-		$scope.selectedIndex = 1;
-	}
-});
-
-kaiwaControllers.controller('logInModalController', function ($scope, $modalInstance, $http, $translate, User) {
+kaiwaControllers.controller('signUpModalController', function($scope, $modalInstance, $http, User, HttpStatus) {
 	$modalInstance.opened.then(function() {
-		$("#home-view").addClass('blur');
-	});
-
-	var lang = User.language || $translate.proposedLanguage() || $translate.use();
-	$translate.use(lang);
-
-	$scope.fb_login = function() {
-		User.fb_signup(function(response) {
-			console.log(response);
-		});
-	}
-
-	$scope.login = function () {
-		// http request to login
-		if (isValid()){
-			// http login
-
-			var data = {
-				"email": $scope.email,
-				"password": $scope.password
-			};
-
-			console.log(data);
-
-			$http({
-				method: 'POST',
-				url: '/login',
-				data: JSON.stringify(data),
-				headers: {'Content-Type': 'application/json'}
-			}).
-			success(function(data, status, headers, config) {
-				console.log("SUCCESS");
-				console.log(data);
-			}).
-			error(function(data, status, headers, config) {
-				console.log("ERROR");
-				console.log(data);
-			});
-		}
-		// $modalInstance.close();
-	}
-
-	var isValid = function() {
-		var valid = true;
-		if ($("#email").val() == '') {
-			valid = false;
-			invalidateEmailInput();
-		} else {
-			validateEmailInput();
-		}
-
-		if ($("#password").val() == '') {
-			valid = false;
-			invalidatePasswordInput();
-		} else {
-			validatePasswordInput();
-		}
-
-		return valid;
-	}
-
-	var validateEmailInput = function() {
-		var emailInput = $("#email");
-		var emailGlyph = $("#email").siblings(".glyphicon");
-
-		emailInput.removeClass("invalid");
-		emailGlyph.removeClass("invalid-glyph");
-
-		emailGlyph.tooltip('hide');
-		emailGlyph.hover().unbind();
-	}
-
-	var invalidateEmailInput = function() {
-		var emailInput = $("#email");
-		var emailGlyph = $("#email").siblings(".glyphicon");
-
-		emailInput.addClass("invalid");
-		emailGlyph.addClass("invalid-glyph");
-
-		emailGlyph.tooltip('show');
-		emailGlyph.hover().unbind();
-
-		$("#email").bind('keyup',function() {
-			if ($("#email").val().length > 0) {
-				validateEmailInput();
-			}
-		});
-
-		setTimeout(function() {
-			emailGlyph.tooltip('hide');
-			emailGlyph.hover().bind();
-			emailGlyph.hover(function() {
-				emailGlyph.tooltip('show');
-			}, function() {
-				emailGlyph.tooltip('hide');
-			});
-		}, 2000);
-	}
-
-	var validatePasswordInput = function() {
-		var passInput = $("#password");
-		var passGlyph = $("#password").siblings(".glyphicon");
-
-		passInput.removeClass("invalid");
-		passGlyph.removeClass("invalid-glyph");
-
-		passGlyph.tooltip('hide');
-		passGlyph.hover().unbind();
-	}
-
-	var invalidatePasswordInput = function() {
-		var passInput = $("#password");
-		var passGlyph = $("#password").siblings(".glyphicon");
-
-		passInput.addClass("invalid");
-		passGlyph.addClass("invalid-glyph");
-
-		passGlyph.tooltip('show');
-		passGlyph.hover().unbind();
-
-		$("#password").bind('keyup',function() {
-			if ($("#password").val().length > 0) {
-				validatePasswordInput()
-			}
-		});
-
-		setTimeout(function() {
-			passGlyph.tooltip('hide');
-			passGlyph.hover().bind();
-			passGlyph.hover(function() {
-				passGlyph.tooltip('show');
-			}, function() {
-				passGlyph.tooltip('hide');
-			});
-		}, 2000);
-	}
-
-	$scope.openSignUpModal = function() {
-		$modalInstance.close(true);	
-	}
-
-});
-
-kaiwaControllers.controller('signUpModalController', function($scope, $modalInstance, $http, User) {
-	$modalInstance.opened.then(function() {
+		$("#signupServerError").addClass("hide");
+		$("#signupEmailInUse").addClass("hide");
 		$("#home-view").addClass('blur');
 	});
 
@@ -251,12 +42,6 @@ kaiwaControllers.controller('signUpModalController', function($scope, $modalInst
 	$scope.year = 'Year';
 
 	$scope.birthday;
-
-	$scope.fb_signup = function() {
-		User.fb_signup(function(response) {
-			console.log(response);
-		});
-	}
 
 	$scope.firstNameBlur = function (typing) {
 		if ($scope.firstName == ''){
@@ -361,6 +146,18 @@ kaiwaControllers.controller('signUpModalController', function($scope, $modalInst
 				invalidateEmailInput();
 			}
 			return;
+		} else if (!isValidEmail($scope.email)) {
+				var emailInput = $("#email");
+				var emailGlyph = emailInput.siblings(".glyphicon");
+
+				emailInput.removeClass("valid");
+				emailGlyph.removeClass("valid-glyph");
+
+				emailInput.addClass("invalid");
+				emailGlyph.addClass("invalid-glyph");
+
+				emailGlyph.tooltip('show');
+				emailGlyph.hover().unbind();
 		} else if ($scope.email != '' && $scope.emailRetype != '' && $scope.email != $scope.emailRetype) {
 			if (!typing) {
 				var emailInput = $("#email");
@@ -671,6 +468,14 @@ kaiwaControllers.controller('signUpModalController', function($scope, $modalInst
 		}
 	}
 
+	var isValidEmail = function(email) {
+		// unicode
+		var re = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+		// non-unicode
+	    // var re = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/i;
+	    return re.test(email);
+	}
+
 	var isValid = function() {
 		var valid = true;
 		if ($scope.firstName == '') {
@@ -683,7 +488,7 @@ kaiwaControllers.controller('signUpModalController', function($scope, $modalInst
 			invalidateLastNameInput();
 		}
 
-		if ($scope.email == '') {
+		if ($scope.email == '' || !isValidEmail($scope.email)) {
 			valid = false;
 			invalidateEmailInput();
 		} else if ($scope.email != $scope.emailRetype) {
@@ -725,12 +530,26 @@ kaiwaControllers.controller('signUpModalController', function($scope, $modalInst
 				if (status === "success") {
 					console.log("succcess");
 				} else {
-					console.log("error");
+					console.log(status);
+					console.log(HttpStatus.CONFLICT);
+					if (status == HttpStatus.CONFLICT) {
+						$("#signupServerError").addClass("hide");
+						$("#signupEmailInUse").removeClass("hide");
+					} else {
+						$("#signupEmailInUse").addClass("hide");
+						$("#signupServerError").removeClass("hide");
+					}
 				}
 			});
 
 		}
 		// $modalInstance.close();
+	}
+
+	$scope.fb_signup = function() {
+		User.fb_signup(function(response) {
+			console.log(response);
+		});
 	}
 
 	$scope.openLogInModal = function () {

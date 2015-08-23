@@ -9,20 +9,23 @@
 
 		service.language = null;
 		service.email = null;
+		service.token = null;
+		service.role = null;
 
 		service.fb_token = null;
 		service.fb_id = null;
+
 		service.fb_login = fb_login;
 		service.fb_signup = fb_signup;
 
 		service.createNewUser = createNewUser;
-		service.createNewUserFB = createNewUserFB;
+		service.facebookAuth = facebookAuth;
 
 		function fb_signup(callback) {
 			service.fb_login(function(response) {
 				if (response === "success") {
 					FB.api('/me?fields=email,first_name,last_name,birthday', function(response) {
-						console.log(JSON.stringify(response));
+						// console.log(JSON.stringify(response));
 						var data = {
 							"firstName": response.first_name,
 							"lastName": response.last_name,
@@ -30,18 +33,18 @@
 							"fb_id": response.id,
 							"fb_token": service.fb_token
 						};
-						service.createNewUserFB(data, callback);
+						service.facebookAuth(data, callback);
 					});
 				}
 			});
 		}
 
 		function fb_login(callback) {
-			console.log("signup via facebook");
 			FB.login(function(response) {
-				console.log(response);
+				// console.log(response);
 				if (response.authResponse) {
 					console.log("fb authentication successfull");
+
 					service.fb_token = response.authResponse.accessToken;
 					service.fb_id = response.authResponse.userID;
 
@@ -65,11 +68,11 @@
 				callback(data, "success");
 			}).
 			error(function(data, status, headers, config) {
-				callback(data, "error");
+				callback(data, status);
 			});
 		}
 
-		function createNewUserFB(data, callback) {
+		function facebookAuth(data, callback) {
 			$http({
 				method: 'POST',
 				url: '/createNewUserFB',
@@ -77,10 +80,17 @@
 				headers: {'Content-Type': 'application/json'}
 			}).
 			success(function(data, status, headers, config) {
+				service.token = data.token;
+				service.email = data.user.email;
+				service.role = data.user.role;
+				// TODO:
+				// service.language = data.user.language;
+				service.fb_token = data.user.fb_token;
+
 				callback(data, "success");
 			}).
 			error(function(data, status, headers, config) {
-				callback(data, "error");
+				callback(data, status);
 			});
 		}
 

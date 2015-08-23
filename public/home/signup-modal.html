@@ -1,7 +1,19 @@
 <!-- Sign Up partial -->
 
 <!-- logIn-modal -->
+
+<div id="signupServerError" class="error-message hide">
+	<i class="fa fa-exclamation-triangle right-space"></i>
+	{{ 'SERVER_ERROR' | translate }}
+</div>
+
+<div id="signupEmailInUse" class="warning-message hide">
+	<i class="fa fa-exclamation-triangle right-space"></i>
+	{{ 'EMAIL_IN_USE' | translate }}<a>{{ 'SPACE' | translate}}{{ 'FORGOT_PASSWORD' | translate }}</a>
+</div>
+
 <div class="modal-body left right">
+
 	<div class="row">
 		<div class="social-buttons">
 			<a href="" class="fb-button btn full-width-button" ng-click="fb_signup()">
@@ -30,7 +42,7 @@
 	<div class="row">
 		<div class="form-group has-feedback">
 		    <input id="email" ng-blur="emailBlur()" type="text" class="form-control" placeholder="{{ 'EMAIL_ADDRESS' | translate }}" ng-model="email" maxlength="40"/>
-    		<i class="glyphicon glyphicon-envelope form-control-feedback" data-toggle="tooltip" data-placement="top" title="Please enter your email address"></i>
+    		<i class="glyphicon glyphicon-envelope form-control-feedback" data-toggle="tooltip" data-placement="top" title="Please enter a valid email address"></i>
     	</div>
 	</div>
 

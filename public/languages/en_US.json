@@ -5,6 +5,9 @@
 	"SIGN_UP_WITH_FACEBOOK": "Sign up with Facebook",
 	"ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
 
+	"SERVER_ERROR": "An error occured, please try again in a moment.",
+	"EMAIL_IN_USE": "The email you have entered is already in use.",
+
 	"EMAIL_ADDRESS": "Email address",
 	"FIRST_NAME": "First name",
 	"LAST_NAME": "Last name",
@@ -18,5 +21,7 @@
 
 	"LEARN_TOGETHER": "Learn Together",
 	"WELCOME1": "Find teachers and conversation partners to", 
-	"WELCOME2": "take your language to the next level"
+	"WELCOME2": "take your language to the next level",
+
+	"SPACE": " "
 }

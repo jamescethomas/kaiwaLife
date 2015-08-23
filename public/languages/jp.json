@@ -5,6 +5,9 @@
 	"SIGN_UP_WITH_FACEBOOK": "Facebookでサインアップ",
 	"ALREADY_HAVE_AN_ACCOUNT": "アカウントがありますか?",
 
+	"SERVER_ERROR": "エラーが発生しました。後もう少しやてみてください。",
+	"EMAIL_IN_USE": "入力したメールアドレスは使われています。",
+
 	"EMAIL_ADDRESS": "メールアドレス",
 	"FIRST_NAME": "名",
 	"LAST_NAME": "姓",
@@ -18,5 +21,7 @@
 
 	"LEARN_TOGETHER" : "一緒に学ぼう",
 	"WELCOME1": "先生と会話のパートナーを見つけて", 
-	"WELCOME2": "英語をパラパアようになる"
+	"WELCOME2": "英語をパラパアようになる",
+
+	"SPACE": ""
 }

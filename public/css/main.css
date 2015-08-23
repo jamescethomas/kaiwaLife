@@ -109,7 +109,7 @@ hr {
 }
 
 .background-image {
-  background-image: url('https://igcdn-photos-c-a.akamaihd.net/hphotos-ak-xtf1/t51.2885-15/11111515_833194870085506_1636793866_n.jpg');
+  background-image: url('/img/background.jpg');
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -339,6 +339,24 @@ hr {
   font-size: 24;
   left: 26px;
   top: 30px;
+}
+
+.error-message {
+  background-color: #FFBCBC;
+  padding: 20px;
+  color: rgba(0,0,0,0.5);
+}
+
+.warning-message {
+  background-color: #FFFF99;
+  padding: 20px;
+  color: rgba(0,0,0,0.5);
+}
+
+.right-space {
+  float: left;
+  padding-top: 15px;
+  margin-right: 10px;
 }
 /***** try it out ****/
 
