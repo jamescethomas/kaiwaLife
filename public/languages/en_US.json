@@ -3,6 +3,8 @@
 
 	"SIGN_UP": "Sign Up",
 	"SIGN_UP_WITH_FACEBOOK": "Sign up with Facebook",
+	"ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
+
 	"EMAIL_ADDRESS": "Email address",
 	"FIRST_NAME": "First name",
 	"LAST_NAME": "Last name",
@@ -11,6 +13,8 @@
 
 	"LOG_IN": "Log In",
 	"LOG_IN_WITH_FACEBOOK": "Log in with Facebook",
+	"FORGOT_PASSWORD": "Forgot password?",
+	"DONT_HAVE_AN_ACCOUNT": "Don't have an account?",
 
 	"LEARN_TOGETHER": "Learn Together",
 	"WELCOME1": "Find teachers and conversation partners to", 

@@ -28,7 +28,7 @@
 
     <div class="row form-group">
 		<span class="pull-right">
-			<a>Forgot password?</a>
+			<a>{{ 'FORGOT_PASSWORD' | translate }}</a>
 		</span>
 	</div>
 
@@ -37,6 +37,6 @@
 	</div>
 	<hr>
 	<div>
-		Don't have an account? <a ng-click="openSignUpModal()">{{ 'SIGN_UP' | translate }}</a>
+		{{ 'DONT_HAVE_AN_ACCOUNT' | translate }} <a ng-click="openSignUpModal()">{{ 'SIGN_UP' | translate }}</a>
 	</div>
 </div>
