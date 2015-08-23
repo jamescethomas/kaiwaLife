@@ -1,10 +1,10 @@
 // home_controller.js
-eiwaControllers.controller('homeController', function($scope, $modal, $translate, User) {
+kaiwaControllers.controller('homeController', function($scope, $modal, $translate, User) {
 	$scope.openLoginModal = function (size) {
 
 		var modalInstance = $modal.open({
 			// animation: $scope.animationsEnabled,
-			templateUrl: 'partials/logIn-modal.html',
+			templateUrl: 'home/logIn-modal.html',
 			controller: 'logInModalController',
 			size: size,
 			windowClass: 'login-signup-modal'
@@ -22,7 +22,7 @@ eiwaControllers.controller('homeController', function($scope, $modal, $translate
 
 	$scope.openSignUpModal = function (size) {
 		var modalInstance = $modal.open({
-			templateUrl: 'partials/signup-modal.html',
+			templateUrl: 'home/signup-modal.html',
 			controller: 'signUpModalController',
 			size: size,
 			windowClass: 'login-signup-modal'
@@ -64,7 +64,7 @@ eiwaControllers.controller('homeController', function($scope, $modal, $translate
 	}
 });
 
-eiwaControllers.controller('logInModalController', function ($scope, $modalInstance, $http, $translate, User) {
+kaiwaControllers.controller('logInModalController', function ($scope, $modalInstance, $http, $translate, User) {
 	$modalInstance.opened.then(function() {
 		$("#home-view").addClass('blur');
 	});
@@ -209,7 +209,7 @@ eiwaControllers.controller('logInModalController', function ($scope, $modalInsta
 
 });
 
-eiwaControllers.controller('signUpModalController', function($scope, $modalInstance, $http, User) {
+kaiwaControllers.controller('signUpModalController', function($scope, $modalInstance, $http, User) {
 	$modalInstance.opened.then(function() {
 		$("#home-view").addClass('blur');
 	});

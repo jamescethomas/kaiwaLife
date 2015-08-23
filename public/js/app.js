@@ -7,7 +7,7 @@ var kaiwaLife = angular.module('kaiwaLife', [
   'ngAnimate',
   // 'eiwaAnimations',
 
-  'eiwaControllers',
+  'kaiwaControllers',
   //,
   // 'eiwaFilters'
   // ,
@@ -28,16 +28,12 @@ kaiwaLife.factory('User', function(){
 kaiwaLife.config(['$routeProvider', '$translateProvider',
 	function($routeProvider, $translateProvider) {
 		$routeProvider.
-			when('/test', {
-				templateUrl: 'partials/partial-test.html',
-				controller: 'TestCtrl'
-			}).
-			when('/anotherTest', {
-				templateUrl: 'partials/main-veiw.html',
-				controller: 'mainViewController'
+			when('/profile', {
+				templateUrl: 'partials/profile.html',
+				controller: 'profileController'
 			}).
 			when('/home', {
-				templateUrl: 'partials/home.html',
+				templateUrl: 'home/home.html',
 				controller: 'homeController'
 			}).
 			otherwise({
@@ -55,4 +51,4 @@ kaiwaLife.config(['$routeProvider', '$translateProvider',
 		});
 }]);
 
-var eiwaControllers = angular.module('eiwaControllers', []);
+var kaiwaControllers = angular.module('kaiwaControllers', []);
