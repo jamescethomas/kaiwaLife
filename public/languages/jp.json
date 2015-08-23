@@ -1,0 +1,18 @@
+{
+	"BRAND" : "kaiwaLife",
+
+	"SIGN_UP": "サインアップ",
+	"SIGN_UP_WITH_FACEBOOK": "Facebookでサインアップ",
+	"EMAIL_ADDRESS": "メールアドレス",
+	"FIRST_NAME": "名",
+	"LAST_NAME": "姓",
+	"RE_ENTER_EMAIL_ADDRESS": "Re-enter email address",
+	"PASSWORD": "パスワード",
+
+	"LOG_IN": "ログイン",
+	"LOG_IN_WITH_FACEBOOK": "Facebookでログイン",
+
+	"LEARN_TOGETHER" : "一緒に学ぼう",
+	"WELCOME1": "先生と会話のパートナーを見つけて", 
+	"WELCOME2": "英語をパラパアようになる"
+}

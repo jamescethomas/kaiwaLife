@@ -1,0 +1,92 @@
+<!-- Sign Up partial -->
+
+<!-- logIn-modal -->
+<div class="modal-body left right">
+	<div class="row">
+		<div class="social-buttons">
+			<a href="" class="fb-button btn full-width-button" ng-click="fb_signup()">
+				<i class="icon fa fa-facebook fa-lg"></i>
+				{{ 'SIGN_UP_WITH_FACEBOOK' | translate }}
+			</a>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="form-group has-feedback">
+		    <input id="firstName" ng-blur="firstNameBlur()" type="text" class="form-control" placeholder="{{ 'FIRST_NAME' | translate }}" ng-model="firstName" maxlength="40" />
+    		<i class="glyphicon glyphicon-user form-control-feedback" data-toggle="tooltip" data-placement="top" title="Please enter your first name"></i>
+    	</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group has-feedback">
+		    <input id="lastName" ng-blur="lastNameBlur()" type="text" class="form-control" placeholder="{{ 'LAST_NAME' | translate }}" ng-model="lastName" maxlength="40"/>
+    		<i class="glyphicon glyphicon-user form-control-feedback" data-toggle="tooltip" data-placement="top" title="Please enter your last name"></i>
+    	</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group has-feedback">
+		    <input id="email" ng-blur="emailBlur()" type="text" class="form-control" placeholder="{{ 'EMAIL_ADDRESS' | translate }}" ng-model="email" maxlength="40"/>
+    		<i class="glyphicon glyphicon-envelope form-control-feedback" data-toggle="tooltip" data-placement="top" title="Please enter your email address"></i>
+    	</div>
+	</div>
+
+	<div class="row">
+		<div class="form-group has-feedback">
+		    <input id="emailRetype" ng-blur="emailRetypeBlur()" type="text" class="form-control" placeholder="{{ 'RE_ENTER_EMAIL_ADDRESS' | translate }}" ng-model="emailRetype" maxlength="40" />
+    		<i class="glyphicon glyphicon-envelope form-control-feedback" data-toggle="tooltip" data-placement="top" title="Email addresses do not match"></i>
+    	</div>
+	</div>
+
+
+	<div class="row">
+		<div class="form-group has-feedback">
+		    <input id="password" ng-blur="passwordBlur()" type="password" class="form-control" placeholder="{{ 'PASSWORD' | translate }}" ng-model="password" maxlength="30" />
+    		<i class="glyphicon glyphicon-lock form-control-feedback" data-toggle="tooltip" data-placement="top" title="Please enter a password longer than 6 characters"></i>
+    	</div>	
+    </div>
+
+    <!-- 
+	<div class="row">
+		<div class="helpText">
+			Birthday
+		</div>
+		<div class="form-group">
+			<span class="input-group">
+				<select class="form-control birthdayDropDown" placeholder="Month" id="months" ng-model="month">
+					<option ng-repeat="month in months">{{month}}</option>
+				</select>
+				<select class="form-control birthdayDropDown" placeholder="Day" id="days" ng-model="day">
+					<option ng-repeat="day in days">{{day}}</option>
+				</select>
+				<select class="form-control birthdayDropDown" placeholder="Year" id="years" ng-model="year">
+					<option ng-repeat="year in years">{{year}}</option>
+				</select>
+				<span id="birthdayQuestion" ng-mouseover="birthdayHover()" class="glyphicon glyphicon-question-sign legalText" data-toggle="tooltip" data-placement="top" title="You must be 18 years or older to create an account"></span>
+			</span>
+		</div>
+	</div>
+	-->
+
+	<div class="row">
+		<button ng-click="signup()" class="pull-right btn btn-primary full-width-button" style="margin-bottom: 10px">{{ 'SIGN_UP' | translate }}</button>
+	</div>
+
+
+	<div class="row">
+		<div class="legalText">
+		By clicking Sign Up, you are agreeing to our <a>Terms of Service</a> and <a>Privacy Policy</a>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+		<div class="helpText">
+			 Already have an account? <a ng-click="openLogInModal()">Log In</a>
+			</div>
+	</div>
+</div>

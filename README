@@ -1,0 +1,9 @@
+README
+
+1. mongod --dbpath ./data/
+2. * in another terminal
+   $ cd {./data/}
+   $ mongo
+   	> use nodetest
+3. * in another terminal
+   $ node app.js

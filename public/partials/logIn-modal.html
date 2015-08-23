@@ -1,0 +1,42 @@
+<!-- logIn-modal -->
+<div class="modal-body left right">
+	<div class="row">
+		<div class="social-buttons">
+			<a href="" class="fb-button btn full-width-button" ng-click="fb_login()">
+				<i class="icon fa fa-facebook fa-lg"></i>
+				{{ 'LOG_IN_WITH_FACEBOOK' | translate }}
+			</a>
+		</div>
+	</div>
+
+	<hr>
+
+	<div class="row">
+	<!-- glyphicon glyphicon-user -->
+		<div class="form-group has-feedback">
+		    <input id="email" ng-model="email" type="text" class="form-control" placeholder="{{ 'EMAIL_ADDRESS' | translate }}" />
+    		<i class="glyphicon glyphicon-user form-control-feedback" data-toggle="tooltip" data-placement="top" title="Please enter your email address"></i>
+    	</div>
+	</div>
+	<div class="row">
+	<!-- glyphicon glyphicon-lock -->
+		<div class="form-group has-feedback">
+		    <input id="password" ng-model="password" type="password" class="form-control" placeholder="{{ 'PASSWORD' | translate }}" />
+    		<i class="glyphicon glyphicon-lock form-control-feedback" data-toggle="tooltip" data-placement="top" title="Please enter your password"></i>
+    	</div>	
+    </div>
+
+    <div class="row form-group">
+		<span class="pull-right">
+			<a>Forgot password?</a>
+		</span>
+	</div>
+
+	<div class="row">
+		<button ng-click="login()" class="pull-right btn btn-primary full-width-button">{{ 'LOG_IN' | translate }}</button>
+	</div>
+	<hr>
+	<div>
+		Don't have an account? <a ng-click="openSignUpModal()">{{ 'SIGN_UP' | translate }}</a>
+	</div>
+</div>
