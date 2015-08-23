@@ -1,9 +1,10 @@
 README
 
-1. mongod --dbpath /PATH/TO/DB
-2. * in another terminal
+1. $ npm install
+2. $ mongod --dbpath /PATH/TO/DB
+3. * in another terminal
    $ cd /PATH/TO/DB
    $ mongo
    	> use nodetest
-3. * in another terminal
+4. * in another terminal
    $ node app.js
