@@ -13,7 +13,7 @@ var users = require('./users.js');
 var app = express();
 var port = process.env.PORT || 8080;
 
-var DBPathLocal = "mongodb://localhost:27017/nodetest"
+var DBPathLocal = "mongodb://localhost:27017/kaiwalife"
 var DBPathProd = "mongodb://james:mongojames1@ds047752.mongolab.com:47752/heroku_wf7xgb1q"
 
 if (!process.env.PORT) {
