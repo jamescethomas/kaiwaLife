@@ -9,12 +9,16 @@ DONE - localization
 DONE - login with facebook
 
 - sign up 
-	- user feedback
+	- user feedback translations
 	- send email for verifications
 		- email server
 
 - authentication (done)
 	- redirection
+
+- profile
+
+- forget password page
 
 - payment
 

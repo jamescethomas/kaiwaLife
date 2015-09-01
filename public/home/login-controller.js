@@ -1,53 +1,46 @@
-kaiwaControllers.controller('logInModalController', function ($scope, $modalInstance, $http, $translate, User) {
+kaiwaControllers.controller('logInModalController',
+	function ($scope, $modalInstance, $http, $translate, $location, User, HttpStatus) {
 	$modalInstance.opened.then(function() {
+		$("#loginInvalidCredentials").addClass("hide");
+		$("#loginServerError").addClass("hide");
 		$("#home-view").addClass('blur');
 	});
 
+	// Set the lanaguage and translate the page
 	var lang = User.language || $translate.proposedLanguage() || $translate.use();
 	$translate.use(lang);
 
+	// login via facebook
 	$scope.fb_login = function() {
-		User.fb_signup(function(response) {
-			if (response.token) {
-				console.log(response);
-				console.log(User);
-				// TODO: redirect to profile
-			} else {
-				// TODO: error message
-			}
-		});
-	}
+		User.fb_auth(loginCallback);
+	};
 
+	// Login via user credentials
 	$scope.login = function () {
-		// http request to login
 		if (isValid()){
-			// http login
-
 			var data = {
 				"email": $scope.email,
 				"password": $scope.password
 			};
-
-			console.log(data);
-
-			$http({
-				method: 'POST',
-				url: '/login',
-				data: JSON.stringify(data),
-				headers: {'Content-Type': 'application/json'}
-			}).
-			success(function(data, status, headers, config) {
-				console.log("SUCCESS");
-				console.log(data);
-			}).
-			error(function(data, status, headers, config) {
-				console.log("ERROR");
-				console.log(data);
-			});
+			User.login(data, loginCallback);
 		}
-		// $modalInstance.close();
+	};
+
+	// function to be executed after a login request is made
+	var loginCallback = function(status) {
+		if (status == HttpStatus.OK) {
+			$location.path('/profile');
+			$modalInstance.close();
+		} else if (status == HttpStatus.INVALID_CREDENTIALS) {
+			$("#loginServerError").addClass("hide");
+			$("#loginInvalidCredentials").removeClass("hide");
+		} else {
+			$("#loginInvalidCredentials").addClass("hide");
+			$("#loginServerError").removeClass("hide");
+		}
 	}
 
+	// Check if user input is valid
 	var isValid = function() {
 		var valid = true;
 		if ($("#email").val() == '') {
@@ -65,8 +58,9 @@ kaiwaControllers.controller('logInModalController', function ($scope, $modalInst
 		}
 
 		return valid;
-	}
+	};
 
+	// UI for valid email
 	var validateEmailInput = function() {
 		var emailInput = $("#email");
 		var emailGlyph = $("#email").siblings(".glyphicon");
@@ -76,8 +70,9 @@ kaiwaControllers.controller('logInModalController', function ($scope, $modalInst
 
 		emailGlyph.tooltip('hide');
 		emailGlyph.hover().unbind();
-	}
+	};
 
+	// UI for invalid email 
 	var invalidateEmailInput = function() {
 		var emailInput = $("#email");
 		var emailGlyph = $("#email").siblings(".glyphicon");
@@ -103,8 +98,9 @@ kaiwaControllers.controller('logInModalController', function ($scope, $modalInst
 				emailGlyph.tooltip('hide');
 			});
 		}, 2000);
-	}
+	};
 
+	// UI for valid password
 	var validatePasswordInput = function() {
 		var passInput = $("#password");
 		var passGlyph = $("#password").siblings(".glyphicon");
@@ -114,8 +110,9 @@ kaiwaControllers.controller('logInModalController', function ($scope, $modalInst
 
 		passGlyph.tooltip('hide');
 		passGlyph.hover().unbind();
-	}
+	};
 
+	// UI for invalid password
 	var invalidatePasswordInput = function() {
 		var passInput = $("#password");
 		var passGlyph = $("#password").siblings(".glyphicon");
@@ -141,10 +138,10 @@ kaiwaControllers.controller('logInModalController', function ($scope, $modalInst
 				passGlyph.tooltip('hide');
 			});
 		}, 2000);
-	}
+	};
 
+	// Close the login modal so the singup modal can open
 	$scope.openSignUpModal = function() {
 		$modalInstance.close(true);	
-	}
-
+	};
 });

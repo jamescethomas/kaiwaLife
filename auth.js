@@ -5,6 +5,20 @@ var hashAndSalt = require('password-hash-and-salt');
 var mongoose = require('mongoose');
 
 var auth = {
+	getToken: function(user) {
+		var expires = expiresIn(1); // 1 day
+		var token = jwt.encode({
+			exp: expires,
+			user: user
+		}, require('./config/secret')());
+
+		return {
+			token: token,
+			expires: expires,
+			user: user
+		};
+	},
+
 	login: function(req, res) {
 		var email = req.body.email || '';
 		var password = req.body.password || '';
@@ -55,7 +69,7 @@ var auth = {
 								email : userData.email
 							}
 							res.status(HttpStatus.OK);
-							res.json(this.getToken(user));
+							res.json(auth.getToken(user));
 							return;
 						}
 					});
@@ -98,20 +112,6 @@ var auth = {
 			username: 'james.c.e.thomas@gmail.com'
 		}
 		return User;
-	},
-
-	getToken: function(user) {
-		var expires = expiresIn(1); // 1 day
-		var token = jwt.encode({
-			exp: expires,
-			user: user
-		}, require('./config/secret')());
-
-		return {
-			token: token,
-			expires: expires,
-			user: user
-		};
 	}
 }
 

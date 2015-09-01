@@ -1,4 +1,15 @@
 <!-- logIn-modal -->
+
+<div id="loginServerError" class="error-message hide">
+	<i class="fa fa-exclamation-triangle right-space"></i>
+	{{ 'SERVER_ERROR' | translate }}
+</div>
+
+<div id="loginInvalidCredentials" class="warning-message hide">
+	<i class="fa fa-exclamation-triangle right-space"></i>
+	{{ 'INVALID_CREDENTIALS' | translate }}
+</div>
+
 <div class="modal-body left right">
 	<div class="row">
 		<div class="social-buttons">

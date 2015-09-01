@@ -1,4 +1,4 @@
-kaiwaControllers.controller('signUpModalController', function($scope, $modalInstance, $http, User, HttpStatus) {
+kaiwaControllers.controller('signUpModalController', function($scope, $modalInstance, $http, $location, User, HttpStatus) {
 	$modalInstance.opened.then(function() {
 		$("#signupServerError").addClass("hide");
 		$("#signupEmailInUse").addClass("hide");
@@ -547,7 +547,7 @@ kaiwaControllers.controller('signUpModalController', function($scope, $modalInst
 	}
 
 	$scope.fb_signup = function() {
-		User.fb_signup(function(response) {
+		User.fb_auth(function(response) {
 			console.log(response);
 		});
 	}
