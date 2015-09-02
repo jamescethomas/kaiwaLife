@@ -28,3 +28,25 @@ This can be accomplished with the following
    $ mongo
    	> use kaiwalife
    ```
+
+#### Todo
+
+**Pages**
+- Profile
+- Forgot password page
+- ...
+
+**Features** 
+- User email verification
+
+**Translations**
+- Login and signup user feedback ~ INVALID_CREDENTIALS
+
+**Research**
+- LLC
+- Terms of serivce
+- Privacy policy
+- web hosting
+   - Amazon web services
+   - Heroku
+- Payment
