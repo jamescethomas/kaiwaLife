@@ -1,7 +1,7 @@
-# kaiwaLife
-### Social networking web appliaction to connect teachers and learners of Japanese and English
+## kaiwaLife
+Social networking web appliaction to connect teachers and learners of Japanese and English
 
-## Developer Installation
+###a Developer Installation
 
 kaiwaLife using npm for package controll. Install [node.js and npm](https://docs.npmjs.com/getting-started/installing-node) to get going.
 
