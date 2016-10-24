@@ -1,0 +1,300 @@
+// Home.less kinda sad file name t-t
+/* main.css */
+@import "../core";
+
+*>a {
+    cursor: pointer !important;
+}
+body {
+    font-family: Circular, "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    background-color: @color-white;
+}
+hr {
+    border-top: 1px solid #ccc;
+}
+
+.content {
+    padding: 0 !important;
+}
+/* main.css */
+
+.header {
+    /*
+  z-index: 2;
+	margin-top: 20px;
+  */
+    padding: 0 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+.left {
+    margin-left: 10px;
+}
+.right {
+    margin-right: 10px;
+}
+.modal.fade .modal-dialog, .modal.in .modal-dialog {
+    -webkit-transform: translate(0, 0);
+    -ms-transform: translate(0, 0);
+    transform: translate(0, 0);
+}
+.modal-content {
+    border-radius: 2px;
+}
+.modal-backdrop {
+    background: rgba(0, 0, 0, 0.2) !important;
+}
+.login-signup-modal {
+    background-color: rgba(0, 0, 0, .2);
+}
+.login-signup-modal .modal-dialog .modal-content {
+    background-color: rgba(255, 255, 255, .9);
+}
+.full-width-button {
+    display: block;
+    width: 100%;
+}
+.has-feedback .form-control-feedback {
+    top: 0px !important;
+    color: lightgray;
+}
+.form-group {
+    margin-bottom: 10px !important;
+}
+.form-control {
+    border-radius: 2px;
+}
+.blur {
+    filter: blur(1px);
+    -webkit-filter: blur(1px);
+    transition: -webkit-filter .4s ease-in-out;
+    -moz-transition: -webkit-filter .4s ease-in-out;
+    -webkit-transition: -webkit-filter .4s ease-in-out;
+    transition: filter .4s ease-in-out;
+    -moz-transition: filter .4s ease-in-out;
+    -webkit-transition: filter .4s ease-in-out;
+}
+.legalText {
+    color: gray;
+}
+.helpText {
+    color: gray;
+}
+.background-image {
+    background-image: url('/img/background.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+    width: 105%;
+    height: 180vh;
+    filter: blur(2px);
+    -webkit-filter: blur(2px);
+    left: -10px;
+    top: -70vh;
+    position: fixed;
+    right: 0;
+    overflow: hidden;
+    z-index: -1;
+}
+.content {
+    top: 10px;
+    left: 0;
+    right: 0;
+    padding: 0 10px;
+}
+.birthdayDropDown {
+    float: left !important;
+    margin-right: 5px;
+    width: 75px !important;
+}
+.valid {
+    border-color: rgb(128, 203, 128);
+}
+.valid-glyph {
+    color: rgb(128, 203, 128) !important;
+}
+.invalid {
+    border-color: rgb(255, 110, 110);
+}
+.invalid-glyph {
+    color: rgb(255, 110, 110) !important;
+}
+.tooltip-inner {
+    max-width: 350px;
+}
+#copyright {
+    position: absolute;
+    bottom: 0;
+    color: white;
+    /* z-index: 2; */
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+.headline {
+    margin-top: 100px;
+    color: white;
+    /* z-index: 10; */
+}
+.headline h1 {
+    font-size: 60px;
+    text-align: center;
+}
+.headline h3 {
+    margin-top: -10px;
+    text-align: center;
+}
+.headline h4 {
+    margin-top: -10px;
+    text-align: center;
+}
+.btn-language {
+    background: transparent !important;
+    color: white;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid white;
+    border-radius: 2px;
+    margin-right: 10px;
+    box-shadow: none;
+    transition: box-shadow .25s ease-in-out;
+    -moz-transition: box-shadow .25s ease-in-out;
+    -webkit-transition: box-shadow .25s ease-in-out;
+}
+.btn-language:focus {
+    outline: none !important;
+}
+.btn-language:hover {
+    box-shadow: inset 0 3px 5px rgba(0, 0, 0, .1);
+    transition: box-shadow .25s ease-in-out;
+    -moz-transition: box-shadow .25s ease-in-out;
+    -webkit-transition: box-shadow .25s ease-in-out;
+}
+.dropdown-language {
+    // background-color: rgba(255, 255, 255, .5) !important;
+    background-color: @color-white;
+}
+.dropdown-menu {
+    min-width: 0px !important;
+    border-radius: 2px;
+}
+.dropdown-element {
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+}
+.dropdown-element.selected {
+    background: #c6dcef !important;
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+}
+.dropdown-element.selected:hover {
+    background: rgba(255, 255, 255, 0.5) !important;
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+}
+.dropdown-element:hover {
+    background: rgba(255, 255, 255, 0.5) !important;
+    transition: background .25s ease-in-out;
+    -moz-transition: background .25s ease-in-out;
+    -webkit-transition: background .25s ease-in-out;
+}
+.open> .dropdown-menu {
+    animation-name: slidenavAnimation;
+    animation-duration: .2s;
+    animation-iteration-count: 1;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+    -webkit-animation-name: slidenavAnimation;
+    -webkit-animation-duration: .2s;
+    -webkit-animation-iteration-count: 1;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-fill-mode: forwards;
+    -moz-animation-name: slidenavAnimation;
+    -moz-animation-duration: .2s;
+    -moz-animation-iteration-count: 1;
+    -moz-animation-timing-function: ease;
+    -moz-animation-fill-mode: forwards;
+}
+@keyframes slidenavAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+@-webkit-keyframes slidenavAnimation {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+.btn {
+    border-radius: 2px;
+}
+.fb-button {
+    background-color: #3b5998;
+    border-radius: 2px;
+    color: white;
+}
+.fb-button:hover {
+    background-color: #4264aa;
+    color: white;
+}
+.fb-button:visited {
+    color: white;
+}
+.icon {
+    position: absolute;
+    font-size: 24;
+    left: 26px;
+    top: 30px;
+}
+.error-message {
+    background-color: #FFBCBC;
+    padding: 20px;
+    color: rgba(0, 0, 0, 0.5);
+}
+.warning-message {
+    background-color: #FFFF99;
+    padding: 20px;
+    color: rgba(0, 0, 0, 0.5);
+}
+.right-space {
+    float: left;
+    padding-top: 15px;
+    margin-right: 10px;
+}
+
+/***** try it out ****/
+.test {
+    background-color: #6A959D;
+    background-image: linear-gradient(30deg, #6A9E98 12%, transparent 12.5%, transparent 87%, #6A9E98 87.5%, #6A9E98), linear-gradient(150deg, #6A9E98 12%, transparent 12.5%, transparent 87%, #6A9E98 87.5%, #6A9E98), linear-gradient(30deg, #6A9E98 12%, transparent 12.5%, transparent 87%, #6A9E98 87.5%, #6A9E98), linear-gradient(150deg, #6A9E98 12%, transparent 12.5%, transparent 87%, #6A9E98 87.5%, #6A9E98), linear-gradient(60deg, #437983 25%, transparent 25.5%, transparent 75%, #437983 75%, #437983), linear-gradient(60deg, #437983 25%, transparent 25.5%, transparent 75%, #437983 75%, #437983);
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+}
+.test1 {
+    -webkit-transform: skewY(-2deg);
+    -moz-transform: skewY(-2deg);
+    -ms-transform: skewY(-2deg);
+    -o-transform: skewY(-2deg);
+    transform: skewY(-2deg);
+}

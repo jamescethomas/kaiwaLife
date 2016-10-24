@@ -1,0 +1,158 @@
+<!-- profile.html -->
+<div class="background-color"></div>
+<div class="background-image-profile"></div>
+<div class="profile-container">
+
+    <div class="container edit-profile-title">
+        <div class="title">{{ 'EDIT_PROFILE' | translate }}</div>
+    </div>
+
+    <div class="left-bar">
+        <div class="container animation-container">
+            <div id="profile-picture" ng-class="dropClass">
+                <span class="drop-text">{{dropText}}</span>
+                <img src="{{imageSource}}" class="profile-picture"></img>
+            </div>
+        </div>
+        <div class="container">
+            <a ng-click="viewProfile()">{{ 'VIEW_PROFILE' | translate }}</a>
+        </div>
+    </div>
+
+    <div class="right-bar">
+        <div class="container user-info">
+            <div class="title">{{ 'BASIC_INFORMATION' | translate }}</div>
+            <div class="row top-row">
+                <div class="col-sm-6 left-group">
+                    <label>{{ 'FIRST_NAME' | translate }}</label>
+                    <input class="form-control profile-first-name" placeholder="{{ 'FIRST_NAME' | translate }}" ng-model="firstName"></input>
+                </div>
+                <div class="col-sm-6 right-group">
+                    <label>{{ 'LAST_NAME' | translate }}</label>
+                    <input class="form-control profile-last-name" placeholder="{{ 'LAST_NAME' | translate }}" ng-model="lastName"></input>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 left-group">
+                    <label>{{ 'CITY' | translate }}</label>
+                    <input class="form-control profile-state" placeholder="{{ 'CITY' | translate }}" ng-model="state"></input>
+                </div>
+                <div class="col-sm-6 right-group">
+                    <label>{{ 'COUNTRY' | translate }}</label>
+                    <input class="form-control profile-country" placeholder="{{ 'COUNTRY' | translate }}" ng-model="country"></input>
+                </div>
+            </div>
+
+            <!-- Time zone selector -->
+            <div class="row bottom-row">
+                <div class="col-sm-12">
+                    <label>{{ 'TIME_ZONE' | translate }}</label>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {{timezone}}
+                            <span class="caret pull-right"></span>
+                        </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li ng-repeat="timezone in timezones" ng-class="{active: timezone == selectedTimeZone}">
+                            <a ng-click="selectTimezone(timezone)">{{timezone}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Birthday selector -->
+            <label>{{ 'BIRTHDAY' | translate }}</label>
+            <div class="row bottom-row">
+                <div class="col-sm-6 year">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {{birthdayYear}}
+                            <span class="caret pull-right"></span>
+                        </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                         <li ng-repeat="year in years" ng-class="{active: year == birthdayYear}">
+                            <a ng-click="selectYear(year)">{{year}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3 month">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {{birthdayMonth}}
+                            <span class="caret pull-right"></span>
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                            <li ng-repeat="month in months" ng-class="{active: month == birthdayMonth}">
+                                <a ng-click="selectMonth(month)">{{month}}</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3 day">
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {{birthdayDay}}
+                            <span class="caret pull-right"></span>
+                        </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li ng-repeat="day in days" ng-class="{active: day == birthdayDay}">
+                            <a ng-click="selectDay(day)">{{day}}</a>
+                        </li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gender selector -->
+            <div class="row bottom-row">
+                <div class="col-sm-6 gender">
+                    <label>{{ 'GENDER' | translate }}</label>
+                    <div class="dropdown">
+                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                            {{ gender | translate}}
+                            <span class="caret pull-right"></span>
+                        </button>
+                      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+                        <li><a ng-click="selectGender('FEMALE')">{{ 'FEMALE' | translate }}</a></li>
+                        <li><a ng-click="selectGender('MALE')">{{ 'MALE' | translate }}</a></li>
+                      </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="title">{{ 'LANGUAGE' | translate }}</div>
+            <div class="row">
+                <label>{{ 'LEARNING' | translate }}</label>
+                <div class="btn-group profile-learning">
+                    <button type="button" class="btn-language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-model="learningDisplay">
+                    {{learningDisplay}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-language">
+                        <li><a class="dropdown-element" ng-click="updateLearningLanguage('English')" ng-class="{selected: learning=='English'}">{{ 'ENGLISH' | translate }}</a></li>
+                        <li><a class="dropdown-element" ng-click="updateLearningLanguage('Japanese')" ng-class="{selected: learning=='Japanese'}">{{ 'JAPANESE' | translate }}</a></li>
+                    </ul>
+                </div>
+                <label>{{ 'NATIVE' | translate }}</label>
+                <div class="btn-group profile-learning">
+                    <button type="button" class="btn-language" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ng-model="nativeDisplay">
+                    {{nativeDisplay}} <span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu dropdown-language">
+                        <li><a class="dropdown-element" ng-click="updateNativeLanguage('English')" ng-class="{selected: native=='English'}">{{ 'ENGLISH' | translate }}</a></li>
+                        <li><a class="dropdown-element" ng-click="updateNativeLanguage('Japanese')" ng-class="{selected: native=='Japanese'}">{{ 'JAPANESE' | translate }}</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="title">{{ "INTRODUCTION" | translate }}</div>
+            <textarea class="form-control profile-bio" ng-model="bio"></textarea>
+        </div>
+        <button class="btn btn-danger cancel-button pull-right" ng-click="viewProfile()">{{ 'CANCEL' | translate }}</button>
+        <button class="btn btn-primary save-button pull-right" ng-click="save()">{{ 'SAVE' | translate }}</button>
+    </div>
+</div>

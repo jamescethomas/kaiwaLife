@@ -1,6 +1,7 @@
-{ 
+{
 	"BRAND": "kaiwaLife",
 
+    "PROFILE": "Profile",
 	"SIGN_UP": "Sign Up",
 	"SIGN_UP_WITH_FACEBOOK": "Sign up with Facebook",
 	"ALREADY_HAVE_AN_ACCOUNT": "Already have an account?",
@@ -15,14 +16,47 @@
 	"PASSWORD": "Password",
 
 	"LOG_IN": "Log In",
+    "LOG_OUT": "Log Out",
 	"LOG_IN_WITH_FACEBOOK": "Log in with Facebook",
 	"FORGOT_PASSWORD": "Forgot password?",
 	"DONT_HAVE_AN_ACCOUNT": "Don't have an account?",
 	"INVALID_CREDENTIALS": "Email address and password don't match.",
 
 	"LEARN_TOGETHER": "Learn Together",
-	"WELCOME1": "Find teachers and conversation partners to", 
+	"WELCOME1": "Find teachers and conversation partners to",
 	"WELCOME2": "take your language to the next level",
 
-	"SPACE": " "
+	"REGISTER": "to receive updates and a chance to participate in beta!",
+
+	"SPACE": " ",
+    "CHOOSE": "Choose",
+
+    "LANGUAGE": "Languages",
+    "ENGLISH": "English",
+    "JAPANESE": "Japanese",
+
+    "PROFILE": "Profile",
+    "MESSAGE": "Message",
+    "ADD_FRIEND": "Add friend",
+    "EDIT_PROFILE": "Edit profile",
+    "VIEW_PROFILE": "View profile",
+    "BASIC_INFORMATION": "Baisc information",
+    "INTRODUCTION": "Introduction",
+    "COMMUNITY": "Community",
+    "MEMBER_SINCE": "Member since:",
+    "LEARNING": "Learning",
+    "NATIVE": "Native",
+    "COUNTRY": "Country",
+    "CITY": "City",
+    "TIME_ZONE": "Time zone",
+    "BIRTHDAY": "Birthday",
+    "YEAR": "Year",
+    "MONTH": "Month",
+    "DAY": "Day",
+    "GENDER": "Gender",
+    "SAVE": "Save",
+    "CANCEL": "Cancel",
+
+    "FEMALE": "Female",
+    "MALE": "Male"
 }

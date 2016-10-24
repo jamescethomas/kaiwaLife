@@ -1,0 +1,50 @@
+<!-- profile.html -->
+<div class="background-color"></div>
+<div class="background-image-profile"></div>
+<div class="profile-container">
+    <div class="left-bar">
+        <div class="container">
+            <div class="container-content">
+                <img src={{imageSource}} class="profile-picture"></img>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container-content">
+                <ul class="contact">
+                    <li>
+                        <a>{{ 'MESSAGE' | translate }}</a>
+                    </li>
+                    <li>
+                        <a>{{ 'ADD_FRIEND' | translate }}</a>
+                    </li>
+                    <li ng-show="userProfile">
+                        <a href="#/profile/edit">{{ 'EDIT_PROFILE' | translate }}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-bar">
+        <div class="container user-info">
+            <div ng-class="{loaded: loading==false}" class="container-content loaded-content">
+                <div class="user-name">{{userName}}</div>
+                <div class="user-location">{{state}}, {{country}} <span class="time">{{time}}{{timezone}}</span></div>
+                <div class="user-learning">{{ 'LEARNING' | translate }}: {{learningDisplay}}</div>
+                <div class="user-language">{{ 'NATIVE' | translate }}: {{nativeDisplay}}</div>
+            </div>
+        </div>
+        <div class="container user-bio">
+            <div class="title">{{ 'INTRODUCTION' | translate }}</div>
+            <div ng-class="{loaded: loading==false}" class="container-content loaded-content">
+                <p>{{bio}}</p>
+            </div>
+        </div>
+        <div class="container">
+            <div class="container-content">
+                <div class="title">{{ 'COMMUNITY' | translate }}</div>
+                {{ 'MEMBER_SINCE' | translate }} {{joindate}}
+            </div>
+        </div>
+    </div>
+</div>

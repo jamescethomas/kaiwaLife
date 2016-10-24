@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>kaiwaLife</title>
-  
+
   <!-- TODO: download fontawesome -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
   <!-- -->
@@ -11,34 +11,48 @@
   <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
   <link rel="stylesheet" href="bower_components/angular-bootstrap/ui-bootstrap-csp.css">
 
-  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" type="text/css" href="css/main.css">
 
   <script src="bower_components/jquery/dist/jquery.js"></script>
+
+  <script src="bower_components/underscore/underscore.js"></script>
 
   <script src="bower_components/angular/angular.js"></script>
 
   <sciprt src="bower_components/angular-ui-route/release/angular-ui-router.js"></sciprt>
 
+  <script src="bower_components/angular-cookies/angular-cookies.js"></script>
   <script src="bower_components/angular-route/angular-route.js"></script>
   <script src="bower_components/angular-resource/angular-resource.js"></script>
-  <script src="bower_components/angular-animate/angular-animate.js"></script>
   <script src="bower_components/angular-translate/angular-translate.js"></script>
   <script src="bower_components/angular-translate-loader-url/angular-translate-loader-url.min.js"></script>
   <script src="bower_components/angular-translate-loader-static-files/angular-translate-loader-static-files.min.js"></script>
+  <script src="bower_components/angular-underscore-module/angular-underscore-module.js"></script>
 
   <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
   <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-  
+
+  <script src="js/lib/datelib.js"></script>
+
   <script src="js/app.js"></script>
+
+  <!-- services -->
+  <script src="js/services/user.service.js"></script>
+  <script src="js/services/profile.service.js"></script>
+
+  <!-- App load -->
+  <script src="js/config.js"></script>
+
   <!-- home page -->
-  <script src="home/home-controller.js"></script>
-  <script src="home/login-controller.js"></script>
-  <script src="home/signup-controller.js"></script>
+  <script src="js/controllers/home/home-controller.js"></script>
+  <script src="js/controllers/home/login-controller.js"></script>
+  <script src="js/controllers/home/signup-controller.js"></script>
 
   <!-- profile -->
-  <script src="profile/profile-controller.js"></script>
-  <!-- services -->
-  <script src="js/user.service.js"></script>
+  <script src="js/controllers/profile/profile-controller.js"></script>
+  <script src="js/controllers/profile/edit-profile-controller.js"></script>
+
+  <script src="js/controllers/nav/nav-controller.js"></script>
 </head>
 <body>
 
@@ -81,9 +95,12 @@
      }(document, 'script', 'facebook-jssdk'));
   </script>
 
-  <div class="view-container">
-    <div ng-view class="view-frame"></div>
-  </div>
+    <div class="view-container kaiwalife" ng-controller="navController">
+        <div class="content">
+            <div class="nav" ng-include src="'templates/nav/nav.html'"></div>
+            <div ng-view class="view-frame"></div>
+        </div>
+    </div>
 
 </body>
 </html>
