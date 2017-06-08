@@ -15,8 +15,8 @@
 	"RE_ENTER_EMAIL_ADDRESS": "Re-enter email address",
 	"PASSWORD": "Password",
 
-	"LOG_IN": "Log In",
-    "LOG_OUT": "Log Out",
+	"LOG_IN": "Log in",
+    "LOG_OUT": "Log out",
 	"LOG_IN_WITH_FACEBOOK": "Log in with Facebook",
 	"FORGOT_PASSWORD": "Forgot password?",
 	"DONT_HAVE_AN_ACCOUNT": "Don't have an account?",

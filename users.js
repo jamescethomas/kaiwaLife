@@ -7,7 +7,7 @@ var FB = require('fb');
 
 var config = require('./config');
 var auth = require('./auth.js');
-var profile = require('./profile.js');
+var profile = require('./app/module/profile.js');
 
 var userSchema = new Schema({
     firstName: String,
@@ -303,10 +303,16 @@ var users = {
     }
 }
 
+/**
+ * Get the next userId
+ *
+ * @param string name - the name of the sequence
+ * @param function callback
+ */
 function getNextSequence(name, callback) {
    mongoose.model('counters').findOneAndUpdate(
         {
-            _id: 'userid'
+            _id: name
         },
         { $inc: { seq: 1 } },
         function (err, counters) {

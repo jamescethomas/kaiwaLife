@@ -1,12 +1,37 @@
 @import "core";
 
 .nav {
-    .header {
-        padding-top: 20px;
-        padding-bottom: 20px;
-        padding-left: 40px;
-        padding-right: 40px;
-        margin: 0;
+    .nav-wrapper {
+        &.profile,
+        &.editProfile {
+            background: @color-white;
+            // border-bottom: 1px solid @color-black;
+            -webkit-box-shadow: 0 4px 6px -6px #777;
+               -moz-box-shadow: 0 4px 6px -6px #777;
+                    box-shadow: 0 4px 6px -6px #777;
+
+            a {
+                color: @color-black;
+            }
+
+            .btn-language {
+                color: @color-black;
+                border-color: #ccc;
+            }
+
+            .headerLink {
+                a,
+                a:hover {
+                    color: @color-black;
+                }
+            }
+        }
+
+        .nav-content {
+            margin: auto;
+            max-width: 800px;
+            padding: 20px 15px;
+        }
     }
 
     a {
@@ -29,30 +54,5 @@
         font-size: 24px;
         font-weight: bold;
         line-height: 1.5;
-    }
-
-    .profile,
-    .editProfile {
-        background: @color-white;
-        // border-bottom: 1px solid @color-black;
-        -webkit-box-shadow: 0 4px 6px -6px #777;
-           -moz-box-shadow: 0 4px 6px -6px #777;
-                box-shadow: 0 4px 6px -6px #777;
-
-        a {
-            color: @color-black;
-        }
-
-        .btn-language {
-            color: @color-black;
-            border-color: @color-black;
-        }
-
-        .headerLink {
-            a,
-            a:hover {
-                color: @color-black;
-            }
-        }
     }
 }

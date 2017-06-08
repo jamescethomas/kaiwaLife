@@ -5,7 +5,9 @@ kaiwaControllers.controller('profileController',
     function($scope, $rootScope, $translate,  $http, $location, $routeParams, User, Profile, HttpStatus) {
         $scope.init = function() {
             $scope.name = "profile";
+            $scope.userProfileId = $routeParams.id;
             setLoadingState(true);
+            $scope.loadingPicture = true;
 
             if (!User.auth) {
                 $location.path('/home');
@@ -14,13 +16,14 @@ kaiwaControllers.controller('profileController',
                 console.log($routeParams);
                 $scope.userProfile = ($routeParams.id == User.userid);
 
-                $http.get('/api/profile/image/' + User.userid, {
+                $http.get('/api/profile/image/' + $routeParams.id, {
                     headers: {
                         'x-access-token': User.token
                     }
                 }).
                 success(function(data, status, headesr, config) {
-                    $scope.imageSource = '/static/' + data.filepath
+                    $scope.imageSource = '/static/' + data.filepath + "?" + Math.random();
+                    $scope.loadingPicture = false;
                 });
 
                 Profile.get($routeParams.id, function () {
@@ -42,6 +45,12 @@ kaiwaControllers.controller('profileController',
 
         $scope.toggleLoading = function () {
             $scope.loading = !$scope.loading;
+        }
+
+        $scope.addFriend = function () {
+            console.log("here");
+            console.log($scope.userProfileId);
+            // Call backend to add a new entry for this friend
         }
 
         var onLanguageChange = $rootScope.$on('languageChange', function () {

@@ -11,7 +11,7 @@ var mongoose = require('mongoose');
 
 var auth = require('./auth.js');
 var users = require('./users.js');
-var profile = require('./profile.js');
+var profile = require('./app/module/profile.js');
 
 var app = express();
 var port = process.env.PORT || 8080;
@@ -71,6 +71,7 @@ app.post('/api/loginTest', users.loginTest);
 // profile api mappings
 app.get('/api/profile/:userid', profile.read);
 app.post('/api/profile/update', profile.update);
+app.post('/api/profile/cancel', profile.cancelUpdate);
 
 app.post('/api/profile/uploadProfilePicture', profile.saveProfilePicture);
 app.get('/api/profile/image/:userid', profile.getProfilePictureUrl);

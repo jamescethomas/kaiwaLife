@@ -21,7 +21,7 @@
 }
 
 .profile-container {
-    width: 800px;
+    max-width: 800px;
     margin: auto;
     margin-top: 15px;
 
@@ -143,8 +143,8 @@
             opacity: 0;
 
             &.loaded {
-                -webkit-transition: opacity 0.15s linear;
-                transition: opacity 0.15s linear;
+                -webkit-transition: opacity 0.20s linear;
+                transition: opacity 0.20s linear;
                 opacity: 1;
             }
         }
@@ -161,6 +161,7 @@
             height: 185px;
             // background: linear-gradient(90deg, #0fb8ad 0%, #2cb5e8 75%);
             text-indent: -999px;
+            object-fit: cover;
         }
 
         .contact {
@@ -245,20 +246,14 @@
         position: relative;
 
         &.over {
-            .profile-picture {
-                background: linear-gradient(
-                  rgba(0, 255, 0, 0.40),
-                  rgba(0, 255, 0, 0.40)
-                );
+            .drop-text {
+                background-color:rgba(0, 0, 0, 0.3);
             }
         }
 
         &.not-available {
-            .profile-picture {
-                background: linear-gradient(
-                  rgba(255, 0, 0, 0.40),
-                  rgba(255, 0, 0, 0.40)
-                );
+            .drop-text {
+                background-color:rgba(0, 0, 0, 0.3);
             }
         }
 
@@ -266,8 +261,64 @@
             position: absolute;
             width: 185px;
             text-align: center;
-            margin-top: 80px;
+            margin-top: 140px;
             color: white;
+            height: 45px;
+            padding-top: 12px;
+            background-color:rgba(0, 0, 0, 0.5);
+            transition: background-color .25s ease-in-out;
+            -moz-transition: background-color .25s ease-in-out;
+            -webkit-transition: background-color .25s ease-in-out;
+        }
+    }
+
+    @media only screen and (max-width : @screen-sm-min) {
+        .right-bar {
+            width: 100%;
+
+            .profile-bio {
+                width: 100%;
+                max-width: initial;
+            }
+        }
+
+        .left-bar {
+            width: 100%;
+            margin: 0;
+        }
+    }
+
+    @media only screen and (max-width : 767px) {
+        .container {
+            .row {
+                .month,
+                .year,
+                .day,
+                .left-group,
+                .right-group {
+                    padding: 0;
+                    padding-left: 0;
+                    padding-right: 0;
+                }
+
+                .year,
+                .month {
+                    margin-bottom: 4px;
+                }
+            }
+        }
+
+        .left-bar {
+            width: 100%;
+            margin: 0;
+
+            .container {
+                width: 50%;
+
+                .profile-picture {
+                    width: 100%;
+                }
+            }
         }
     }
 }

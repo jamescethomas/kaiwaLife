@@ -15,7 +15,7 @@ kaiwaControllers.controller('editProfileController',
                     }
                 }).
                 success(function(data, status, headesr, config) {
-                    $scope.imageSource = '/static/' + data.filepath
+                    $scope.imageSource = '/static/' + data.filepath + "?" + Math.random();
                 });
 
                 Profile.get(User.userid, function () {
@@ -69,7 +69,7 @@ kaiwaControllers.controller('editProfileController',
                 evt.dataTransfer.items[0].type == "image/tiff" ||
                 evt.dataTransfer.items[0].type == "image/png");
             $scope.$apply(function(){
-                $scope.dropText = ok ? 'Drop files here' : 'Only images are allowed!'
+                $scope.dropText = ok ? 'Drop files here' : 'Only images are allowed'
                 $scope.dropClass = ok ? 'over' : 'not-available'
             });
         }, false);
@@ -82,21 +82,31 @@ kaiwaControllers.controller('editProfileController',
             });
             var files = evt.dataTransfer.files;
             if (files.length > 0) {
-                if (files[0].size > (1048576 * 5)) {
-                    $scope.$apply(function() {
-                        $scope.dropText = "File too large, 5MB limit please";
-                        $scope.dropClass = "not-available";
-                    });
+                if (files[0].type == "image/jpeg" ||
+                    files[0].type == "image/gif" ||
+                    files[0].type == "image/tiff" ||
+                    files[0].type == "image/png") {
+                    if (files[0].size > (1048576 * 5)) {
+                        $scope.$apply(function() {
+                            $scope.dropText = "File too large, 5MB limit";
+                            $scope.dropClass = "not-available";
+                        });
+                    } else {
+                        $scope.$apply(function(){
+                            $scope.files = [];
+                            for (var i = 0; i < files.length; i++) {
+                                $scope.files.push(files[i]);
+                            }
+                            if ($scope.files.length > 1) {
+                                $scope.files = [$scope.files[0]];
+                            }
+                            $scope.uploadProfileImage();
+                        });
+                    }
                 } else {
-                    $scope.$apply(function(){
-                        $scope.files = [];
-                        for (var i = 0; i < files.length; i++) {
-                            $scope.files.push(files[i]);
-                        }
-                        if ($scope.files.length > 1) {
-                            $scope.files = [$scope.files[0]];
-                        }
-                        $scope.uploadProfileImage();
+                    $scope.$apply(function() {
+                        $scope.dropText = "Only images are allowed";
+                        $scope.dropClass = "not-available";
                     });
                 }
             }
@@ -117,26 +127,16 @@ kaiwaControllers.controller('editProfileController',
             }).
             success(function(data, status, headers, config) {
                 console.log("success");
-
-
-                $http.get('/api/profile/image/' + User.userid, {
-                    headers: {
-                        'x-access-token': User.token
-                    }
-                }).
-                success(function(data, status, headesr, config) {
+                setTimeout(function () {
+                    $scope.$apply(function () {
+                        $scope.imageSource = '/static/' + data.filepath + '?' + Math.random();
+                    });
                     setTimeout(function () {
                         $scope.$apply(function () {
-                            $scope.imageSource = '/static/' + data.filepath + '?' + Math.random();
+                            $scope.dropClass = 'slide-animation1';
                         });
-                        setTimeout(function () {
-                            $scope.$apply(function () {
-                                $scope.dropText = '';
-                                $scope.dropClass = 'slide-animation1';
-                            });
-                        }, 100);
-                    }, 1000);
-                });
+                    }, 100);
+                }, 1000);
             }).
             error(function(data, status, headers, config) {
                 console.log("error");
@@ -153,7 +153,7 @@ kaiwaControllers.controller('editProfileController',
         /**
          * Save the user's profile data
          */
-        $scope.save = function () {
+        $scope.save = function (callback) {
             var data = {
                 firstName: $scope.firstName,
                 lastName: $scope.lastName,
@@ -198,6 +198,10 @@ kaiwaControllers.controller('editProfileController',
                 User.saveUserDataCookie();
 
                 $location.path('/profile/' + User.userid);
+
+                if (callback) {
+                    callback();
+                }
             }).
             error(function(data, status, headers, config) {
                 if (data.message === "Token Expired") {
@@ -227,7 +231,25 @@ kaiwaControllers.controller('editProfileController',
          * Return the the user profile
          */
         $scope.viewProfile = function () {
-            $location.path('/profile/' + User.userid);
+            $scope.save(function () {
+                $location.path('/profile/' + User.userid);
+            });
+        };
+
+        /**
+         * Cancel editing profile
+         */
+        $scope.cancel = function () {
+            $http({
+                method: 'POST',
+                url: '/api/profile/cancel',
+                headers: {
+                    'x-access-token': User.token
+                }
+            }).
+            success(function(data, status, headesr, config) {
+                $location.path('/profile/' + User.userid);
+            });
         };
 
         /**

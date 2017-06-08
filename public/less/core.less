@@ -3,6 +3,15 @@
 @color-gray: #F9F9F9;
 @color-dark-gray: #BEBEBE;
 
+/* Small devices (tablets, 768px and up) */
+@screen-sm-min: 900px;
+
+/* Medium devices (desktops, 992px and up) */
+@screen-md-min: 1000px;
+
+/* Large devices (large desktops, 1200px and up) */
+@screen-lg-min: 1200px;
+
 .ease-in-out(@style) {
     transition: @style .25s ease-in-out;
     -moz-transition: @style .25s ease-in-out;
@@ -20,3 +29,12 @@
         border-radius: 0px;
     }
 }
+
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  select:focus,
+  textarea:focus,
+  input:focus {
+    font-size: 16px !important;
+    background: #eee;
+  }
+ }
