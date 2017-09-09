@@ -43,7 +43,6 @@ This can be accomplished with the following
 - Login and signup user feedback ~ INVALID_CREDENTIALS
 
 **Research**
-- LLC
 - Terms of serivce
 - Privacy policy
 - web hosting
